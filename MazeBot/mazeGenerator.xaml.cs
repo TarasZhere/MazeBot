@@ -46,6 +46,7 @@ namespace MazeBot
             this.columns = catchColumns();
             this.nodeSize = catchNodeSize();
             output_text();
+            this.mazeDrawer();
         }
 
         /*
@@ -110,10 +111,34 @@ namespace MazeBot
             }
             catch
             {
-                num = 10;
+                num = 20;
             }
 
             return num;
+        }
+
+        private void mazeDrawer()
+        {
+            canvas.Children.Clear();
+
+            for(int i = 0; i < this.rows; i++)
+            {
+                for(int j = 0; j < this.columns; j++)
+                {
+                    Rectangle node = new Rectangle();
+                    node.Width = this.nodeSize;
+                    node.Height = this.nodeSize;
+                    node.Fill = Brushes.Transparent;
+                    node.Stroke = Brushes.Black;
+                    node.StrokeThickness = 2;
+
+                    canvas.Children.Add(node);
+
+                    Canvas.SetLeft(node, j * (this.nodeSize - 2));
+                    Canvas.SetTop(node, i * (this.nodeSize - 2));
+
+                }
+            }
         }
     }
 }
