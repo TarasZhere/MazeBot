@@ -1,0 +1,112 @@
+﻿<Window x:Class="MazeBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MazeBot"
+        mc:Ignorable="d"
+        Title="Maze" 
+        Height="600" 
+        Width="1000" 
+        FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Medium" 
+        FontSize="20"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Grid>
+
+        <!--Defining top bar and main section-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Top Bar for setting and page navigation-->
+        <Grid 
+            Grid.Row="0"
+            Background="#FF0F0F2D">
+            <!--Defining the number of objects in the top bar-->
+            <Grid.ColumnDefinitions>
+                <!--Setting-->
+                <ColumnDefinition Width="0.7*"/>
+                <!--Close-->
+                <ColumnDefinition Width="0.3*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <!--Setting section-->
+            <StackPanel Orientation="Horizontal"
+                Grid.Column="0">
+                <!--logo & title-->
+                <Button
+                    Content="Maze Bot"
+                    Margin="10, 0"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderBrush="Transparent"
+                    FontSize="20"
+                    FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Black" 
+                    FontStyle="Italic" 
+                    FontWeight="Bold" Click="HomeButton_Click"/>
+                <!--Maze Generator -->
+                <Button
+                    Background="Transparent"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="Transparent"
+                    Margin="10, 0"
+                    FontSize="14"
+                    Content="Mazer" 
+                    Click="MazeButton_Click"
+                    FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Black" 
+
+                    />
+
+                <!-- Web -->
+                <Button
+                    Margin="10, 0"
+                    Background="Transparent"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="Transparent"
+                    FontSize="14"
+                    Content="Website" 
+                    Click="WebButton_Click"
+                    FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Black" 
+                    />
+
+
+
+                <!--Developers -->
+                <Button
+                    Margin="10, 0"
+                    Background="Transparent"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    BorderBrush="Transparent"
+                    Content="Developers"
+                    FontSize="14" 
+                    Click="DevelopersButton_Click"/>
+
+
+                <!--end of setting bar-->
+            </StackPanel>
+
+
+            <!-- Closing window section -->
+            <StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+        <!--MAIN PANEL-->
+        <Frame 
+            NavigationUIVisibility="Hidden"
+            Grid.Row="1"
+            x:Name="MainPanel"/>
+
+    </Grid>
+</Window>
