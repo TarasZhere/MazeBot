@@ -46,7 +46,7 @@ namespace MazeBot
             this.columns = catchColumns();
             this.nodeSize = catchNodeSize();
             output_text();
-            this.mazeDrawer();
+            this.gridDrawer();
         }
 
         /*
@@ -117,7 +117,7 @@ namespace MazeBot
             return num;
         }
 
-        private void mazeDrawer()
+        private void gridDrawer()
         {
             canvas.Children.Clear();
 
