@@ -8,10 +8,47 @@
         Title="Maze" 
         Height="600" 
         Width="1000" 
-        FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Medium" 
+        FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins" 
         FontSize="20"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <!--Style-->
+    <Window.Resources>
+        <!--Button styles-->
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF3A3A65"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="main">
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
+    <!--definition-->
     <Grid>
 
         <!--Defining top bar and main section-->
@@ -34,69 +71,40 @@
             </Grid.ColumnDefinitions>
 
             <!--Setting section-->
-            <StackPanel Orientation="Horizontal"
+            <StackPanel 
+                Orientation="Horizontal"
                 Grid.Column="0">
                 <!--logo & title-->
                 <Button
+                    Width="100"
+                    Style="{StaticResource main}"
                     Content="Maze Bot"
-                    Margin="10, 0"
-                    Background="Transparent"
-                    Foreground="White"
-                    BorderBrush="Transparent"
-                    FontSize="20"
-                    FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Black" 
-                    FontStyle="Italic" 
-                    FontWeight="Bold" Click="HomeButton_Click"/>
+                    FontWeight="Bold"
+                    Click="HomeButton_Click"/>
                 <!--Maze Generator -->
                 <Button
-                    Background="Transparent"
-                    Foreground="White"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    BorderBrush="Transparent"
-                    Margin="10, 0"
-                    FontSize="14"
                     Content="Mazer" 
                     Click="MazeButton_Click"
-                    FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Black" 
-
-                    />
+                    FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins"/>
 
                 <!-- Web -->
                 <Button
-                    Margin="10, 0"
-                    Background="Transparent"
-                    Foreground="White"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    BorderBrush="Transparent"
-                    FontSize="14"
                     Content="Website" 
                     Click="WebButton_Click"
-                    FontFamily="/testWPPF;component/Fonts/Poppins/#Poppins Black" 
-                    />
-
-
+                    FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins"/>
 
                 <!--Developers -->
                 <Button
-                    Margin="10, 0"
-                    Background="Transparent"
-                    Foreground="White"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    BorderBrush="Transparent"
                     Content="Developers"
-                    FontSize="14" 
-                    Click="DevelopersButton_Click"/>
-
-
+                    
+                    Click="DevelopersButton_Click"
+                    FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins"/>
                 <!--end of setting bar-->
             </StackPanel>
 
 
             <!-- Closing window section -->
-            <StackPanel>
+            <StackPanel Grid.Column="1">
 
             </StackPanel>
 

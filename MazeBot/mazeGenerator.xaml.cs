@@ -20,6 +20,7 @@ namespace MazeBot
     /// </summary>
     public partial class mazeGenerator : Page
     {
+        List<Node[]> grid;
         private int rows;
         private int columns;
         private int nodeSize;
@@ -46,6 +47,7 @@ namespace MazeBot
             this.columns = catchColumns();
             this.nodeSize = catchNodeSize();
             output_text();
+            //Draw a grid & set up the maze
             this.gridDrawer();
         }
 
@@ -117,12 +119,19 @@ namespace MazeBot
             return num;
         }
 
+        /*
+         *      GRID DRAWER
+         *      The funciton draws a maze by getting input from the used.
+         *      and set the nodes in a double array
+         */
         private void gridDrawer()
         {
             canvas.Children.Clear();
 
             for(int i = 0; i < this.rows; i++)
             {
+                this.grid.Add(new Node[this.columns]);
+
                 for(int j = 0; j < this.columns; j++)
                 {
                     Rectangle node = new Rectangle();
@@ -137,6 +146,38 @@ namespace MazeBot
                     Canvas.SetLeft(node, j * (this.nodeSize - 2));
                     Canvas.SetTop(node, i * (this.nodeSize - 2));
 
+                    this.grid[i][j].setNode(i, j);
+                }
+            }
+        }
+
+        /*
+         *      DFS
+         */
+        private void DFS()
+        {
+            Node current = this.grid[0][0];
+
+            Stack<Node> stack = new Stack<Node>();
+
+            stack.Push(current);
+            current.setVisited();
+
+            while(stack.Count != 0)
+            {
+                Node next = current.getRandomNeighbor(this.grid);
+
+                if(next != null)
+                {
+                    next.setParent(current);
+                    current = next;
+                    current.setVisited();
+                    stack.Push(current);
+                }
+                else
+                {
+                    current = current.getParent();
+                    stack.Pop();
                 }
             }
         }
