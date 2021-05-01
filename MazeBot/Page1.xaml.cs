@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MazeBot
 {
     /// <summary>
-    /// Interaction logic for WebPageHref.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class WebPageHref : Page
+    public partial class Page1 : Page
     {
-        public WebPageHref()
+        public Page1()
         {
             InitializeComponent();
         }

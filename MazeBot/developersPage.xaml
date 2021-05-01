@@ -5,10 +5,48 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MazeBot"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins" 
+      d:DesignHeight="570" d:DesignWidth="1000"
       Title="developersPage">
 
-    <Grid>
-        
-    </Grid>
+
+    <Canvas  Height="570" Width="1000">
+        <Rectangle Fill="#222831" Canvas.Left="0" Canvas.Top="0" Width="1000" Height="285" />
+        <Rectangle Fill="#393E46" Canvas.Left="0" Canvas.Top="285" Width="1000" Height="285" />
+
+        <Path Stroke="#00ABD5" StrokeThickness="4">
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="0,285">
+                        <LineSegment Point="1000,285" />
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" Canvas.Left="178" Canvas.Top="36">
+                <Run FontSize="48" Foreground="#00ABD5">Maze Bot</Run><LineBreak/>
+                <Run FontSize="24" Foreground="#00ABD5"> Created by Taras Zherebetskyy, Bryce Scott, Oliver Stephen </Run><LineBreak/>
+                <Run FontSize="18" Foreground="#EEEEEE"> Contacts: </Run><LineBreak/>
+                <Run FontSize="18" Foreground="#EEEEEE"> taras.zherebetskyy18@mckendree.edu </Run><LineBreak/>
+                <Run FontSize="18" Foreground="#EEEEEE"> bryce.scott16@mckendree.edu </Run><LineBreak/>
+                <Run FontSize="18" Foreground="#EEEEEE"> oliver.stephen19@mckendree.edu </Run><LineBreak/>
+        </TextBlock>
+
+        <TextBlock Canvas.Left="178" Canvas.Top="309" Margin="0" >
+                <Run FontSize="12" Foreground="#EEEEEE"> Copyright </Run><LineBreak/>
+                <Run>  </Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">Licensed under the Apache License, Version 2.0 (the "License");</Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">you may not use this file except in compliance with the License.</Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">You may obtain a copy of the License at</Run><LineBreak/>
+                <Run>  </Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">http://www.apache.org/licenses/LICENSE-2.0</Run><LineBreak/>
+                <Run>  </Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">Unless required by applicable law or agreed to in writing, software</Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">distributed under the License is distributed on an "AS IS" BASIS,</Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">See the License for the specific language governing permissions and</Run><LineBreak/>
+                <Run FontSize="12" Foreground="#EEEEEE">limitations under the License.</Run><LineBreak/>
+        </TextBlock>
+    </Canvas>
 </Page>

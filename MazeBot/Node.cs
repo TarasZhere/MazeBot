@@ -6,48 +6,20 @@ using System.Threading.Tasks;
 
 namespace MazeBot
 {
-    class Node
+    public class Node
     {
-        private struct Data {
-            Node node;
-            char dir;
-
-            public Data(Node nd, char dir)
-            {
-                this.node = nd;
-                this.dir = dir;
-            }
-
-            public Data getData()
-            {
-                return this;
-            }
-
-            public Node getNodeData()
-            {
-                return this.node;
-            }
-
-            public char getDirData()
-            {
-                return this.dir;
-            }
-        }
-        private int column;
-        private int row;
+        private static Random rnd = new Random();
+        public int column;
+        public int row;
         private bool visited = false;
         private Node parent = null;
                                 //left, top, right, bottom
         private bool[] walls = { true, true, true, true };
-        private bool begining = false;
-        private bool end = false;
 
-        Node()
-        {
 
-        }
+        public Node() { }
 
-        Node(int row, int col)
+        public Node(int row, int col)
         {
             this.row = row;
             this.column = col;
@@ -57,16 +29,6 @@ namespace MazeBot
         {
             this.row = r;
             this.column = c;
-        }
-
-        public void setNodeAsBegin()
-        {
-            this.begining = true;
-        }
-
-        public void setNodeAsEnd()
-        {
-            this.end = true;
         }
 
         public bool isVisited()
@@ -89,43 +51,45 @@ namespace MazeBot
             this.parent = current;
         }
 
-        private List<Data> getNeighbors(List<Node[]> grid)
+        private List<Data> getNeighbors(List<List<Node>> grid)
         {
             List<Data> neighbor = new List<Data>();
-            //left
-            if (!grid[this.row][this.column - 1].isVisited())
-            {
-                try { neighbor.Add(new Data(grid[this.row][this.column - 1], '<')); } catch { }
-            }
+            
+                //left
+            if (this.column - 1 >= 0 && !grid[this.row][this.column - 1].isVisited())
+                neighbor.Add(new Data(grid[this.row][this.column - 1], '<'));
+            
+
+            
             //top
-            if (!grid[this.row - 1][this.column].isVisited())
-            {
-                try { neighbor.Add(new Data(grid[this.row - 1][this.column], '^')); } catch { }
-            }
+            if (this.row - 1 >= 0 && !grid[this.row - 1][this.column].isVisited())
+                neighbor.Add(new Data(grid[this.row - 1][this.column], '^'));
+
+
+
             //right
-            if (!grid[this.row][this.column + 1].isVisited())
-            {
-                try { neighbor.Add(new Data(grid[this.row][this.column + 1], '>')); } catch { }
-            }
-
+            if (this.column + 1 < grid[0].Count && !grid[this.row][this.column + 1].isVisited())
+                neighbor.Add(new Data(grid[this.row][this.column + 1], '>'));
+          
+            
             //bottom
-            if (!grid[this.row + 1][this.column].isVisited())  
-            {
-                try { neighbor.Add(new Data(grid[this.row + 1][this.column], 'v')); } catch { }
-            }
-
+            if (this.row + 1 < grid.Count && !grid[this.row + 1][this.column].isVisited())
+                    neighbor.Add(new Data(grid[this.row + 1][this.column], 'v'));
+            
+           
             return neighbor;
         }
 
-        public Node getRandomNeighbor(List<Node[]> grid)
+        public Data getRandomNeighbor(List<List<Node>> grid)
         {
             List<Data> neighbors = this.getNeighbors(grid);
             
+            
 
             if(neighbors.Count != 0)
-            {
-                Random rnd = new Random();
+            {            
                 int index = rnd.Next(neighbors.Count);
+
                 Data selected = neighbors[index];
                 Node next = selected.getNodeData();
                 char dir = selected.getDirData();
@@ -152,14 +116,11 @@ namespace MazeBot
                     next.walls[1] = false;
                 }
 
-                //next.parent = this;
-
-                return next;
-
+                return selected;
             }
             else
             {
-                Node next = null;
+                Data next = new Data(new Node(), 'x');
                 return next;
             }
         }

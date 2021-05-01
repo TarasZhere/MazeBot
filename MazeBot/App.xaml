@@ -4,6 +4,34 @@
              xmlns:local="clr-namespace:MazeBot"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!--Style-->
+
+        <!--Textbox-->
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#EEEEEE"/>
+            <Setter Property="Background" Value="#393E46"/>
+            <Setter Property="BorderBrush" Value="#EEEEEE"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="Margin" Value="3, 3, 10, 3"/>
+        </Style>
+        <!--Textblock-->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#EEEEEE"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
         
+        <!--Home text edit-->
+        <Style TargetType="TextBlock" x:Key="homeTitle">
+            <Setter Property="Foreground" Value="#00ABD5"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Margin" Value="20, 100, 0, 0"/>
+        </Style>
+            
     </Application.Resources>
 </Application>

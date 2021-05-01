@@ -13,15 +13,13 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
-    <!--Style-->
     <Window.Resources>
         <!--Button styles-->
-        <Style TargetType="Button">
+        <Style TargetType="Button" x:Key="homePageButtons">
             <Setter Property="Width" Value="100"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="#eeeeee"/>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Template">
@@ -30,37 +28,40 @@
                         <Border Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="BorderBrush" Value="#00ABD5"/>
+                                <Setter Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF3A3A65"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#393e46"/>
+                    <Setter Property="Foreground" Value="#eeeeee"/>
                     <Setter Property="FontWeight" Value="SemiBold"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
-        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="main">
-            <Setter Property="FontStyle" Value="Italic"/>
-            <Setter Property="FontSize" Value="18"/>
-        </Style>
     </Window.Resources>
-    <!--definition-->
-    <Grid>
 
-        <!--Defining top bar and main section-->
+    <!--definition-->
+
+    <Grid  Margin="0">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--Top Bar for setting and page navigation-->
-        <Grid 
-            Grid.Row="0"
-            Background="#FF0F0F2D">
+        <Grid
+                    Margin="0"
+                    Grid.Row="0"
+                    Background="#222831">
             <!--Defining the number of objects in the top bar-->
             <Grid.ColumnDefinitions>
                 <!--Setting-->
@@ -72,31 +73,30 @@
 
             <!--Setting section-->
             <StackPanel 
-                Orientation="Horizontal"
-                Grid.Column="0">
+                        Margin="0"
+                        Orientation="Horizontal"
+                        Grid.Column="0">
                 <!--logo & title-->
                 <Button
+                    Margin="20, 0, 20, 0"
                     Width="100"
-                    Style="{StaticResource main}"
+                    Style="{StaticResource homePageButtons}"
                     Content="Maze Bot"
                     FontWeight="Bold"
+                    FontSize="18"
+                    FontStyle="Italic"
                     Click="HomeButton_Click"/>
                 <!--Maze Generator -->
                 <Button
+                    Style="{StaticResource homePageButtons}"
                     Content="Mazer" 
                     Click="MazeButton_Click"
-                    FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins"/>
-
-                <!-- Web -->
-                <Button
-                    Content="Website" 
-                    Click="WebButton_Click"
                     FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins"/>
 
                 <!--Developers -->
                 <Button
                     Content="Developers"
-                    
+                    Style="{StaticResource homePageButtons}"
                     Click="DevelopersButton_Click"
                     FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins"/>
                 <!--end of setting bar-->
@@ -104,17 +104,22 @@
 
 
             <!-- Closing window section -->
-            <StackPanel Grid.Column="1">
-
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <Button Style="{StaticResource homePageButtons}" Margin="20,0,20,0" Width="15" VerticalAlignment="Center" HorizontalAlignment="Right" Name="CloseButton" Click="CloseButton_Click">
+                    <Image Height="15" Source="./img/close.png"/>
+                </Button>
             </StackPanel>
 
         </Grid>
 
         <!--MAIN PANEL-->
         <Frame 
-            NavigationUIVisibility="Hidden"
             Grid.Row="1"
-            x:Name="MainPanel"/>
-
+            BorderBrush="Transparent"
+            NavigationUIVisibility="Hidden"
+            x:Name="MainPanel" Background="#222831" 
+            Grid.ColumnSpan="2" Margin="0,0,0,0" 
+            Grid.RowSpan="2"
+            />
     </Grid>
 </Window>

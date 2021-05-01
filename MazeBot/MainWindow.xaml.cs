@@ -18,19 +18,21 @@ namespace MazeBot
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
         //this is the page that would display the maze
         private mazeGenerator mazePage;
-        private WebPageHref webPage;
         private developersPage devPage;
+        private Page1 homePage;
 
         public MainWindow()
         {
             InitializeComponent();
             this.mazePage = new mazeGenerator();
-            this.webPage = new WebPageHref();
             this.devPage = new developersPage();
+            this.homePage = new Page1();
+            MainPanel.Content = this.homePage;
         }
 
 
@@ -42,11 +44,6 @@ namespace MazeBot
             MainPanel.Content = this.mazePage;
         }
 
-        private void WebButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainPanel.Content = this.webPage;
-        }
-
         private void DevelopersButton_Click(object sender, RoutedEventArgs e)
         {
             MainPanel.Content = this.devPage;
@@ -54,7 +51,12 @@ namespace MazeBot
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
+            MainPanel.Content = this.homePage;
+        }
 
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

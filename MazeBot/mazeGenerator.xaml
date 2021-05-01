@@ -5,55 +5,42 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MazeBot"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="570" d:DesignWidth="1000"
       Title="mazeGenerator"
       FontFamily="/MazeBot;component/Fonts/Poppins/#Poppins">
     <!--Style-->
     <Page.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="Foreground" Value="#F226253A"/>
+        <Style TargetType="Button" x:Key="generate">
+            
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#00ABD5"/>
+            <Setter Property="Width" Value="100"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border CornerRadius="7" Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            
+
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF3A3A65"/>
-                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#393E46"/>
+                    <Setter Property="Foreground" Value="#EEEEEE"/>
                     <Setter Property="FontWeight" Value="SemiBold"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    
                 </Trigger>
             </Style.Triggers>
-        </Style>
-        <!--Textbox-->
-        <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#F226253A"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="MinWidth" Value="30"/>
-            <Setter Property="Margin" Value="3"/>
-
+            
         </Style>
     </Page.Resources>
     
 
-    <Grid>
+    <Grid
+        Background="#EEEEEE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*" />
             <ColumnDefinition Width="0.8*"/>
@@ -62,11 +49,10 @@
         <!--Maze Setting section-->
         <StackPanel
             Grid.Column="0"
-            Background="#F2181735"
+            Background="#222831"
             >
-            
-            <Grid
-                >
+
+            <Grid Margin="0,15,0,0">
                 <!--Grid definition-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
@@ -81,95 +67,76 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <!--Rows-->
-                
+
                 <TextBlock
                     Grid.Column="0"
                     Grid.Row="0"
                     Text="Rows:"
-                    Foreground="White" 
-                    FontSize="14"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Margin="3"/>
+                    />
                 <TextBox 
                     Grid.Column="1"
                     Grid.Row="0"
                     x:Name="rows_textBox">
-                    
+
                 </TextBox>
-            
+
                 <!-- Columns -->
-            
+
                 <TextBlock
                     Grid.Column="0"
                     Grid.Row="1"
-                    Text="Columns:"
-                    Foreground="White"
-                    FontSize="14"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Margin="3"/>
+                    Text="Columns:"/>
                 <TextBox 
                     Grid.Column="1"
                     Grid.Row="1"
-                    x:Name="columns_textBox">
+                    x:Name="columns_textBox"/>
 
-                </TextBox>
-            
+
+
                 <!--Node size-->
-                
+
                 <TextBlock
                     Grid.Column="0"
                     Grid.Row="2"
-                    Text="Node Size:"
-                    Foreground="White"
-                    FontSize="14"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Margin="3"/>
+                    Text="Node Size:"/>
                 <TextBox 
                     Grid.Column="1"
                     Grid.Row="2"
                     x:Name="nodeSize_textBox">
 
                 </TextBox>
-                
-                <!-- Generate button -->
+
                 <Button
+                    Style="{StaticResource generate}"
+                    
                     Grid.Row="4"
                     Grid.ColumnSpan="2"
                     Margin="0, 10"
                     Content="Generate" 
                     Click="GenrateMazeButton_Click"/>
 
-                <!-- data output -->
-                
-                <TextBlock
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center"
-                    Text="Data output"
-                    Foreground="White"
-                    FontSize="14"
-                />
-                <TextBox 
+                <Button
+                    Style="{StaticResource generate}"
                     Grid.Row="6"
                     Grid.ColumnSpan="2"
-                    Margin="10"
-                    Height="100"
-                    x:Name="output"/>
-
+                    Margin="0,10"
+                    Content="Export png"
+                    Click="SaveMazeToPNG"
+                    />
             </Grid>
         </StackPanel>
         
-        <!--Maze-->
-        <Canvas
-            Margin="10"
-            x:Name="canvas"
-            Grid.Column="1"
-            Background="White">
-        </Canvas>
+        <ScrollViewer 
+            HorizontalScrollBarVisibility="Auto" 
+            VerticalScrollBarVisibility="Auto" 
+            Grid.Column="1">
+            
+            <Canvas
+                Background="#eeeeee"
+                Name="canvas">
+            </Canvas>
+        </ScrollViewer>
     </Grid>
 </Page>
